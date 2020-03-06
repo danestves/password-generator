@@ -38,24 +38,24 @@ const RANDOM_FUNCTION = {
 }
 
 // DOM elements
-const resultEl = document.getElementById('result')
-const lengthEl = document.getElementById('length')
-const uppercaseEl = document.getElementById('uppercase')
-const lowercaseEl = document.getElementById('lowercase')
-const numbersEl = document.getElementById('numbers')
-const symbolsEl = document.getElementById('symbols')
-const generateEl = document.getElementById('generate')
-const clipboardEl = document.getElementById('clipboard')
+const RESULT_ELEMENT = document.getElementById('result')
+const LENGTH_ELEMENT = document.getElementById('length')
+const UPPERCASE_ELEMENT = document.getElementById('uppercase')
+const LOWERCASE_ELEMENT = document.getElementById('lowercase')
+const NUMBERS_ELEMENT = document.getElementById('numbers')
+const SYMBOLS_ELEMENT = document.getElementById('symbols')
+const GENERATE_ELEMENT = document.getElementById('generate')
+const CLIPBOARD_ELEMENT = document.getElementById('clipboard')
 
 // Event listeners
-generateEl.addEventListener('click', () => {
-  const length = +lengthEl.value
-  const hasUpper = uppercaseEl.checked
-  const hasLower = lowercaseEl.checked
-  const hasNumber = numbersEl.checked
-  const hasSymbol = symbolsEl.checked
+GENERATE_ELEMENT.addEventListener('click', () => {
+  const length = +LENGTH_ELEMENT.value
+  const hasUpper = UPPERCASE_ELEMENT.checked
+  const hasLower = LOWERCASE_ELEMENT.checked
+  const hasNumber = NUMBERS_ELEMENT.checked
+  const hasSymbol = SYMBOLS_ELEMENT.checked
 
-  resultEl.innerText = generatePassword(
+  RESULT_ELEMENT.innerText = generatePassword(
     length,
     hasUpper,
     hasLower,
@@ -91,7 +91,26 @@ const generatePassword = (length, upper, lower, number, symbol) => {
   // Add final pw to the pw var and return
   const FINAL_PASSWORD = GENERATED_PASSWORD.slice(0, length)
 
+  // UI changes to text color
+  RESULT_ELEMENT.classList.remove('text-gray-500')
+  RESULT_ELEMENT.classList.add('text-gray-700')
+
   return FINAL_PASSWORD
 }
 
 // Copy password to clipboard
+CLIPBOARD_ELEMENT.addEventListener('click', () => {
+  const TEXTAREA = document.createElement('textarea')
+  const PASSWORD = RESULT_ELEMENT.innerText
+
+  if (!PASSWORD) {
+    return
+  }
+
+  TEXTAREA.value = PASSWORD
+  document.body.appendChild(TEXTAREA)
+  TEXTAREA.select()
+  document.execCommand('copy')
+  TEXTAREA.remove()
+  alert('Password copied to clipboard!')
+})
