@@ -1,0 +1,56 @@
+{
+  "name": "static-html-webpack-boilerplate",
+  "version": "1.1.1",
+  "description": "Modern tooling for old-school static webpage development",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --config webpack.config.prod.js",
+    "lint:js": "./node_modules/.bin/eslint src/js/*.js",
+    "lint:styles": "stylelint \"src/**/*.scss\"",
+    "lint:html": "pa11y-ci ./src/**/*.html",
+    "start:dev": "webpack-dev-server --config webpack.config.dev.js",
+    "start": "webpack --config webpack.config.prod.js && http-server ./dist -o"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/erickzhao/static-html-webpack-boilerplate.git"
+  },
+  "author": "erick zhao",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.7.4",
+    "@babel/core": "^7.8.6",
+    "@babel/preset-env": "^7.7.4",
+    "autoprefixer": "^9.1.5",
+    "babel-loader": "^8.0.6",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^5.0.5",
+    "css-loader": "^3.2.1",
+    "cssnano": "^4.1.0",
+    "eslint": "^5.5.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "file-loader": "^5.0.2",
+    "glob": "^7.1.6",
+    "html-webpack-plugin": "^3.0.0",
+    "http-server": "^0.12.1",
+    "mini-css-extract-plugin": "^0.9.0",
+    "node-sass": "^4.13.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "pa11y-ci": "^2.1.1",
+    "postcss-loader": "^3.0.0",
+    "raw-loader": "^3.1.0",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.0.1",
+    "stylelint": "^13.2.0",
+    "stylelint-config-standard": "^19.0.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.9.0",
+    "webpack-merge": "^4.2.2"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
+}
