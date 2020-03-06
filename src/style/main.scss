@@ -1,9 +1,5 @@
-body {
-  font-family: 'Helvetica Neue', sans-serif;
-  text-align: center;
-}
+@import 'tailwindcss/base';
 
-img {
-  display: block;
-  margin: 50px auto;
-}
+@import 'tailwindcss/components';
+
+@import 'tailwindcss/utilities';
