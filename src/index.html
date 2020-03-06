@@ -1,15 +1,129 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="h-full" lang="en">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Password Generator</title>
   </head>
+  <body class="flex items-center justify-center h-full bg-gray-200">
+    <div class="w-full max-w-xl px-5 py-8 bg-white rounded-lg shadow-lg">
+      <h2 class="text-3xl leading-none text-center">Password Generator</h2>
 
-  <body>
-    <h1>Hello Static HTML!</h1>
-    <a href="/page.html">Link to my other page</a>
-    <img src="/static/tail.png" alt="code" />
+      <div class="mt-8">
+        <div class="relative mb-3">
+          <input
+            id="result"
+            type="text"
+            placeholder="Your password will be here"
+            class="block w-full px-4 py-5 leading-tight text-gray-700 transition-all duration-200 bg-gray-200 border border-transparent rounded appearance-none focus:border-black focus:outline-none focus:bg-white"
+          />
+
+          <button
+            class="absolute right-0 px-6 py-2 mr-2 -ml-2 text-white transition-all duration-200 transform -translate-y-1/2 bg-indigo-700 rounded top-1/2 hover:bg-indigo-600"
+            data-tippy-content="Copy to clipboard"
+          >
+            <svg
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              class="w-8 h-8"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"
+              ></path>
+            </svg>
+          </button>
+        </div>
+
+        <div class="flex items-center justify-between my-4">
+          <label for="password_length" class="text-lg text-gray-700"
+            >Password length</label
+          >
+
+          <div class="flex items-center justify-center w-20">
+            <input
+              id="password_length"
+              type="number"
+              class="block w-16 px-2 py-3 leading-tight text-gray-700 transition-all duration-200 bg-gray-200 border border-transparent rounded appearance-none focus:border-black focus:outline-none focus:bg-white"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between my-4">
+          <span for="uppercase" class="text-lg text-gray-700"
+            >Include uppercase letters</span
+          >
+
+          <div class="flex items-center justify-center w-20">
+            <input
+              id="uppercase"
+              type="checkbox"
+              class="inline-block w-8 h-8 text-indigo-700 align-middle bg-white border rounded outline-none appearance-none select-none focus:shadow-outline"
+              checked
+              required
+            />
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between my-4">
+          <span for="lowercase" class="text-lg text-gray-700"
+            >Include lowercase letters</span
+          >
+
+          <div class="flex items-center justify-center w-20">
+            <input
+              id="lowercase"
+              type="checkbox"
+              class="inline-block w-8 h-8 text-indigo-700 align-middle bg-white border rounded outline-none appearance-none select-none focus:shadow-outline"
+              checked
+              required
+            />
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between my-4">
+          <span for="numbers" class="text-lg text-gray-700"
+            >Include numbers</span
+          >
+
+          <div class="flex items-center justify-center w-20">
+            <input
+              id="numbers"
+              type="checkbox"
+              class="inline-block w-8 h-8 text-indigo-700 align-middle bg-white border rounded outline-none appearance-none select-none focus:shadow-outline"
+              checked
+              required
+            />
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between my-4">
+          <span for="symbols" class="text-lg text-gray-700"
+            >Include symbols</span
+          >
+
+          <div class="flex items-center justify-center w-20">
+            <input
+              id="symbols"
+              type="checkbox"
+              class="inline-block w-8 h-8 text-indigo-700 align-middle bg-white border rounded outline-none appearance-none select-none focus:shadow-outline"
+              checked
+              required
+            />
+          </div>
+        </div>
+
+        <button
+          id="generate"
+          class="w-full px-6 py-3 mt-4 font-bold text-white transition-all duration-200 bg-indigo-700 rounded hover:bg-indigo-600"
+        >
+          Generate password
+        </button>
+      </div>
+    </div>
   </body>
 </html>
