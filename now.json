@@ -1,0 +1,6 @@
+{
+  "name": "password-generator",
+  "version": 2,
+  "alias": "passgenerator",
+  "rewrites": [{ "source": "/(.*)", "destination": "/" }]
+}
