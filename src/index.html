@@ -5,8 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Password Generator</title>
   </head>
-  <body class="flex items-center justify-center h-full bg-gray-200">
-    <div class="w-full max-w-xl px-5 py-8 bg-white rounded-lg shadow-lg">
+  <body
+    class="flex flex-col items-center justify-center transition-all duration-200 bg-gray-200 dark:bg-gray-500 sm:h-full"
+  >
+    <header
+      class="absolute top-0 left-0 w-full px-5 py-4 transition-all duration-200 bg-white shadow-lg dark:bg-gray-700"
+    >
+      <div
+        class="container relative flex flex-wrap items-center justify-end px-5 mx-auto"
+      >
+        <div class="flex items-center px-3 ml-4 toggleWrapper">
+          <input type="checkbox" class="absolute" id="darkmode-toggle" />
+          <label for="darkmode-toggle" class="toggle">
+            <span class="toggle__handler">
+              <span class="crater crater--1"></span>
+              <span class="crater crater--2"></span>
+              <span class="crater crater--3"></span>
+            </span>
+            <span class="star star--1"></span>
+            <span class="star star--2"></span>
+            <span class="star star--3"></span>
+            <span class="star star--4"></span>
+            <span class="star star--5"></span>
+            <span class="star star--6"></span>
+          </label>
+        </div>
+      </div>
+    </header>
+
+    <div
+      class="w-full max-w-xl px-5 py-8 transition-all duration-200 bg-white rounded-lg shadow-lg dark:bg-gray-700 dark:text-white"
+    >
       <h2 class="text-3xl leading-none text-center">Password Generator</h2>
 
       <div class="mt-8">
@@ -40,7 +69,7 @@
         </div>
 
         <div class="flex items-center justify-between my-4">
-          <label for="length" class="text-lg text-gray-700"
+          <label for="length" class="text-lg text-gray-700 dark:text-gray-300"
             >Password length</label
           >
 
@@ -58,7 +87,7 @@
         </div>
 
         <div class="flex items-center justify-between my-4">
-          <span for="uppercase" class="text-lg text-gray-700"
+          <span for="uppercase" class="text-lg text-gray-700 dark:text-gray-300"
             >Include uppercase letters</span
           >
 
@@ -74,7 +103,7 @@
         </div>
 
         <div class="flex items-center justify-between my-4">
-          <span for="lowercase" class="text-lg text-gray-700"
+          <span for="lowercase" class="text-lg text-gray-700 dark:text-gray-300"
             >Include lowercase letters</span
           >
 
@@ -90,7 +119,7 @@
         </div>
 
         <div class="flex items-center justify-between my-4">
-          <span for="numbers" class="text-lg text-gray-700"
+          <span for="numbers" class="text-lg text-gray-700 dark:text-gray-300"
             >Include numbers</span
           >
 
@@ -106,7 +135,7 @@
         </div>
 
         <div class="flex items-center justify-between my-4">
-          <span for="symbols" class="text-lg text-gray-700"
+          <span for="symbols" class="text-lg text-gray-700 dark:text-gray-300"
             >Include symbols</span
           >
 
@@ -123,11 +152,28 @@
 
         <button
           id="generate"
-          class="w-full px-6 py-3 mt-4 font-bold text-white transition-all duration-200 bg-indigo-700 rounded hover:bg-indigo-600"
+          class="w-full px-6 py-3 mt-4 font-bold text-white transition-all duration-200 bg-indigo-700 rounded hover:bg-indigo-600 dark:text-indigo-700 dark:bg-white dark:hover:bg-gray-300"
         >
           Generate password
         </button>
       </div>
     </div>
+
+    <footer
+      class="absolute bottom-0 left-0 w-full py-4 text-right transition-all duration-200 bg-white shadow-lg dark:bg-gray-700 dark:text-white"
+    >
+      <div class="container px-5 mx-auto">
+        <p class="font-bold leading-none">
+          Made with <span style="color: #e25555;">&#9829;</span> by
+          <a
+            class="underline"
+            href="https://twitter.com/danestves"
+            target="_blank"
+            rel="noopener noreferrer"
+            >@danestves</a
+          >
+        </p>
+      </div>
+    </footer>
   </body>
 </html>

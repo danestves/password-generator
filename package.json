@@ -1,7 +1,7 @@
 {
-  "name": "static-html-webpack-boilerplate",
-  "version": "1.1.1",
-  "description": "Modern tooling for old-school static webpage development",
+  "name": "password-generator",
+  "version": "1.0.0",
+  "description": "Password generator made by @danestves with TailwindCSS and plain JavaScript",
   "main": "index.js",
   "scripts": {
     "build": "webpack --config webpack.config.prod.js",
@@ -15,7 +15,7 @@
     "type": "git",
     "url": "git+https://github.com/erickzhao/static-html-webpack-boilerplate.git"
   },
-  "author": "erick zhao",
+  "author": "Daniel Esteves <estevesd8@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "@babel/cli": "^7.7.4",
@@ -30,7 +30,7 @@
     "copy-webpack-plugin": "^5.0.5",
     "css-loader": "^3.2.1",
     "cssnano": "^4.1.10",
-    "eslint": "^5.16.0",
+    "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.20.1",

@@ -2,15 +2,21 @@
 import tippy from 'tippy.js'
 import 'tippy.js/dist/tippy.css'
 
-// Init tippy
+/**
+ * Init tippy
+ */
 tippy('[data-tippy-content]')
 
-// Hot module
+/**
+ * Hot module
+ */
 if (module.hot) {
   module.hot.accept()
 }
 
-// Generator functions - http://www.net-comber.com/charset.html
+/**
+ * Generator functions - http://www.net-comber.com/charset.html
+ */
 const getRandomLower = () => {
   return String.fromCharCode(Math.floor(Math.random() * 26) + 97)
 }
@@ -29,7 +35,9 @@ const getRandomSymbol = () => {
   return symbols[Math.floor(Math.random() * symbols.length)]
 }
 
-// Init functions
+/**
+ * Init functions
+ */
 const RANDOM_FUNCTION = {
   lower: getRandomLower,
   upper: getRandomUpper,
@@ -37,7 +45,9 @@ const RANDOM_FUNCTION = {
   symbol: getRandomSymbol
 }
 
-// DOM elements
+/**
+ * DOM elements
+ */
 const RESULT_ELEMENT = document.getElementById('result')
 const LENGTH_ELEMENT = document.getElementById('length')
 const UPPERCASE_ELEMENT = document.getElementById('uppercase')
@@ -47,7 +57,9 @@ const SYMBOLS_ELEMENT = document.getElementById('symbols')
 const GENERATE_ELEMENT = document.getElementById('generate')
 const CLIPBOARD_ELEMENT = document.getElementById('clipboard')
 
-// Event listeners
+/**
+ * Event listeners
+ */
 GENERATE_ELEMENT.addEventListener('click', () => {
   const length = +LENGTH_ELEMENT.value
   const hasUpper = UPPERCASE_ELEMENT.checked
@@ -64,7 +76,15 @@ GENERATE_ELEMENT.addEventListener('click', () => {
   )
 })
 
-// Generate password
+/**
+ * Generate password
+ *
+ * @param {Number} length
+ * @param {Boolean} upper
+ * @param {Boolean} lower
+ * @param {Boolean} number
+ * @param {Boolean} symbol
+ */
 const generatePassword = (length, upper, lower, number, symbol) => {
   // Init pw var
   let GENERATED_PASSWORD = ''
@@ -98,7 +118,9 @@ const generatePassword = (length, upper, lower, number, symbol) => {
   return FINAL_PASSWORD
 }
 
-// Copy password to clipboard
+/**
+ * Copy password to clipboard
+ */
 CLIPBOARD_ELEMENT.addEventListener('click', () => {
   const TEXTAREA = document.createElement('textarea')
   const PASSWORD = RESULT_ELEMENT.innerText
@@ -114,3 +136,51 @@ CLIPBOARD_ELEMENT.addEventListener('click', () => {
   TEXTAREA.remove()
   alert('Password copied to clipboard!')
 })
+
+/**
+ * Dark mode
+ */
+let DARK_MODE = localStorage.getItem('darkMode')
+const BODY = document.getElementsByTagName('html')[0]
+const DARKMODE_TOGGLE = document.getElementById('darkmode-toggle')
+
+// Check if darkmode is enabled
+// If it's enabled, turn it off
+// If it's disabled, turn in on
+
+const enableDarkMode = () => {
+  // Add class to the document
+  BODY.classList.add('dark-mode')
+
+  // Update darkmode in the localStorage
+  localStorage.setItem('darkMode', 'enabled')
+}
+
+const disableDarkMode = () => {
+  // Remove class to the body
+  BODY.classList.remove('dark-mode')
+
+  // Update darkmode in the localStorage
+  localStorage.setItem('darkMode', null)
+}
+
+if (DARK_MODE === 'enabled') {
+  enableDarkMode()
+} else {
+  disableDarkMode()
+}
+
+DARKMODE_TOGGLE.addEventListener('change', function() {
+  //check if the checkbox is checked or not
+  if (DARKMODE_TOGGLE.checked) {
+    enableDarkMode()
+  } else {
+    disableDarkMode()
+  }
+})
+
+if (BODY.classList.contains('dark-mode')) {
+  DARKMODE_TOGGLE.checked = true
+} else {
+  DARKMODE_TOGGLE.checked = false
+}
