@@ -128,6 +128,9 @@
 
           <button
             id="clipboard"
+            title="Copy to clipboard"
+            aria-label="Copy to clipboard"
+            aria-labelledby="copy clipboard"
             class="absolute right-0 p-2 mr-2 -ml-2 text-gray-500 transition-all duration-200 transform -translate-y-1/2 bg-transparent rounded-full focus:outline-none focus:shadow-outline top-1/2 hover:bg-gray-300"
             data-tippy-content="Copy to clipboard"
           >
@@ -235,9 +238,13 @@
         <div class="text-center">
           <button
             id="generate"
+            title="Generate password"
+            aria-label="Generate password"
+            aria-labelledby="Generate password"
             class="px-6 py-3 mt-4 font-bold text-indigo-700 transition-all duration-200 bg-transparent rounded shadow hover:text-white hover:bg-indigo-600 dark:text-white dark:bg-blue-700 dark:hover:bg-blue-600"
           >
             Generate password
+            <span class="sr-only">Generate password</span>
           </button>
         </div>
       </div>
