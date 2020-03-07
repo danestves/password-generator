@@ -1,6 +1,6 @@
 {
   "name": "password-generator",
   "version": 2,
-  "alias": "passgenerator",
+  "alias": "passwordgenerator-tw",
   "rewrites": [{ "source": "/(.*)", "destination": "/" }]
 }
