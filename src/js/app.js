@@ -154,47 +154,61 @@ CLIPBOARD_ELEMENT.addEventListener('click', () => {
 /**
  * Dark mode
  */
-let DARK_MODE = localStorage.getItem('darkMode')
-const BODY = document.getElementsByTagName('html')[0]
-const DARKMODE_TOGGLE = document.getElementById('darkmode-toggle')
+const darkMode = (classNameDark, classNameLight, storageKey) => {
+  const BODY = document.getElementsByTagName('html')[0]
+  const DARKMODE_TOGGLE = document.getElementById('darkmode-toggle')
 
-// Check if darkmode is enabled
-// If it's enabled, turn it off
-// If it's disabled, turn in on
-
-const enableDarkMode = () => {
-  // Add class to the document
-  BODY.classList.add('dark-mode')
-
-  // Update darkmode in the localStorage
-  localStorage.setItem('darkMode', 'enabled')
-}
-
-const disableDarkMode = () => {
-  // Remove class to the body
-  BODY.classList.remove('dark-mode')
-
-  // Update darkmode in the localStorage
-  localStorage.setItem('darkMode', null)
-}
-
-if (DARK_MODE === 'enabled') {
-  enableDarkMode()
-} else {
-  disableDarkMode()
-}
-
-DARKMODE_TOGGLE.addEventListener('change', function() {
-  //check if the checkbox is checked or not
-  if (DARKMODE_TOGGLE.checked) {
-    enableDarkMode()
-  } else {
-    disableDarkMode()
+  function setClassOnDocumentBody(darkMode) {
+    BODY.classList.add(darkMode ? classNameDark : classNameLight)
+    BODY.classList.remove(darkMode ? classNameLight : classNameDark)
   }
-})
 
-if (BODY.classList.contains('dark-mode')) {
-  DARKMODE_TOGGLE.checked = true
-} else {
-  DARKMODE_TOGGLE.checked = false
+  const PREFER_DARK_QUERY = '(prefers-color-scheme: dark)'
+  const MQL = window.matchMedia(PREFER_DARK_QUERY)
+  const SUPPORTS_COLOR_SCHEME_QUERY = MQL.media === PREFER_DARK_QUERY
+  let LOCAL_STORAGE_THEME = null
+
+  try {
+    LOCAL_STORAGE_THEME = localStorage.getItem(storageKey)
+  } catch (err) {
+    console.error(err)
+  }
+
+  const LOCAL_STORAGE_EXISTS = LOCAL_STORAGE_THEME !== null
+  if (LOCAL_STORAGE_EXISTS) {
+    LOCAL_STORAGE_THEME = JSON.parse(LOCAL_STORAGE_THEME)
+  }
+
+  // Determine the source of truth
+  if (LOCAL_STORAGE_EXISTS) {
+    // source of truth from localStorage
+    setClassOnDocumentBody(LOCAL_STORAGE_THEME)
+  } else if (SUPPORTS_COLOR_SCHEME_QUERY) {
+    // source of truth from system
+    setClassOnDocumentBody(MQL.matches)
+    localStorage.setItem(storageKey, MQL.matches)
+  } else {
+    // source of truth from document.body
+    const IS_DARK_MODE = document.body.classList.contains(classNameDark)
+
+    localStorage.setItem(storageKey, JSON.stringify(IS_DARK_MODE))
+  }
+
+  DARKMODE_TOGGLE.addEventListener('change', function() {
+    //check if the checkbox is checked or not
+    if (DARKMODE_TOGGLE.checked) {
+      setClassOnDocumentBody(MQL.matches)
+      localStorage.setItem(storageKey, MQL.matches)
+    } else {
+      setClassOnDocumentBody(false)
+      localStorage.setItem(storageKey, false)
+    }
+  })
+
+  if (BODY.classList.contains(classNameDark)) {
+    DARKMODE_TOGGLE.checked = true
+  } else {
+    DARKMODE_TOGGLE.checked = false
+  }
 }
+darkMode('dark-mode', 'light-mode', 'darkMode')
