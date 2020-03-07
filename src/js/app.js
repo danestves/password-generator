@@ -189,7 +189,7 @@ const darkMode = (classNameDark, classNameLight, storageKey) => {
     localStorage.setItem(storageKey, MQL.matches)
   } else {
     // source of truth from document.body
-    const IS_DARK_MODE = document.body.classList.contains(classNameDark)
+    const IS_DARK_MODE = BODY.classList.contains(classNameDark)
 
     localStorage.setItem(storageKey, JSON.stringify(IS_DARK_MODE))
   }
