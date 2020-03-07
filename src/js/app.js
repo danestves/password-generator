@@ -1,11 +1,16 @@
 // Dependencies
 import tippy from 'tippy.js'
 import 'tippy.js/dist/tippy.css'
+import 'tippy.js/animations/scale.css'
+import Toastify from 'toastify-js'
+import 'toastify-js/src/toastify.css'
 
 /**
  * Init tippy
  */
-tippy('[data-tippy-content]')
+tippy('[data-tippy-content]', {
+  animation: 'scale'
+})
 
 /**
  * Hot module
@@ -58,25 +63,6 @@ const GENERATE_ELEMENT = document.getElementById('generate')
 const CLIPBOARD_ELEMENT = document.getElementById('clipboard')
 
 /**
- * Event listeners
- */
-GENERATE_ELEMENT.addEventListener('click', () => {
-  const length = +LENGTH_ELEMENT.value
-  const hasUpper = UPPERCASE_ELEMENT.checked
-  const hasLower = LOWERCASE_ELEMENT.checked
-  const hasNumber = NUMBERS_ELEMENT.checked
-  const hasSymbol = SYMBOLS_ELEMENT.checked
-
-  RESULT_ELEMENT.innerText = generatePassword(
-    length,
-    hasUpper,
-    hasLower,
-    hasNumber,
-    hasSymbol
-  )
-})
-
-/**
  * Generate password
  *
  * @param {Number} length
@@ -119,13 +105,32 @@ const generatePassword = (length, upper, lower, number, symbol) => {
 }
 
 /**
+ * Event listeners
+ */
+GENERATE_ELEMENT.addEventListener('click', () => {
+  const LENGTH = +LENGTH_ELEMENT.value
+  const HAS_UPPER = UPPERCASE_ELEMENT.checked
+  const HAS_LOWER = LOWERCASE_ELEMENT.checked
+  const HAS_NUMBER = NUMBERS_ELEMENT.checked
+  const HAS_SYMBOL = SYMBOLS_ELEMENT.checked
+
+  RESULT_ELEMENT.innerText = generatePassword(
+    LENGTH,
+    HAS_UPPER,
+    HAS_LOWER,
+    HAS_NUMBER,
+    HAS_SYMBOL
+  )
+})
+
+/**
  * Copy password to clipboard
  */
 CLIPBOARD_ELEMENT.addEventListener('click', () => {
   const TEXTAREA = document.createElement('textarea')
   const PASSWORD = RESULT_ELEMENT.innerText
 
-  if (!PASSWORD) {
+  if (PASSWORD === 'Your password will be here') {
     return
   }
 
@@ -134,7 +139,16 @@ CLIPBOARD_ELEMENT.addEventListener('click', () => {
   TEXTAREA.select()
   document.execCommand('copy')
   TEXTAREA.remove()
-  alert('Password copied to clipboard!')
+  Toastify({
+    text: 'Password copied to clipboard <span class="mx-2">🚀⌨️</span>',
+    duration: 5000,
+    close: true,
+    gravity: 'top',
+    position: 'right',
+    backgroundColor: '#48bb78',
+    className: 'text-lg',
+    stopOnFocus: true // Prevents dismissing of toast on hover
+  }).showToast()
 })
 
 /**

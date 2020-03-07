@@ -6,10 +6,10 @@
     <title>Password Generator</title>
   </head>
   <body
-    class="flex flex-col items-center justify-center transition-all duration-200 bg-gray-200 dark:bg-gray-500 sm:h-full"
+    class="flex flex-col items-center justify-center pt-16 transition-all duration-200 bg-gray-200 sm:pt-0 dark:bg-gray-500 sm:h-full"
   >
     <header
-      class="absolute top-0 left-0 w-full px-5 py-4 transition-all duration-200 bg-white shadow-lg dark:bg-gray-700"
+      class="absolute top-0 left-0 w-full px-5 py-4 transition-all duration-200 bg-white shadow-lg dark:bg-blue-900"
     >
       <div
         class="container relative flex flex-wrap items-center justify-end px-5 mx-auto"
@@ -34,68 +34,69 @@
     </header>
 
     <div
-      class="w-full max-w-xl px-5 py-8 transition-all duration-200 bg-white rounded-lg shadow-lg dark:bg-gray-700 dark:text-white"
+      class="w-full max-w-md px-8 py-10 transition-all duration-200 bg-white rounded-lg shadow-lg dark:bg-blue-900 dark:text-white"
     >
-      <h2 class="text-3xl leading-none text-center">Password Generator</h2>
+      <h2
+        class="flex justify-center w-full text-2xl font-semibold leading-none text-center"
+      >
+        Password Generator ✨
+      </h2>
 
-      <div class="mt-8">
-        <div class="relative mb-3">
+      <div class="mt-4">
+        <div class="relative mb-12">
           <span
             id="result"
-            class="block w-full px-4 py-5 leading-tight text-gray-500 transition-all duration-200 bg-gray-200 border border-transparent rounded appearance-none focus:border-black focus:outline-none focus:bg-white"
+            class="block w-full p-3 leading-tight text-gray-500 transition-all duration-200 bg-gray-200 border border-transparent rounded appearance-none focus:border-black focus:outline-none focus:bg-white"
           >
             Your password will be here
           </span>
 
           <button
             id="clipboard"
-            class="absolute right-0 px-6 py-2 mr-2 -ml-2 text-white transition-all duration-200 transform -translate-y-1/2 bg-indigo-700 rounded top-1/2 hover:bg-indigo-600"
+            class="absolute right-0 p-2 mr-2 -ml-2 text-gray-500 transition-all duration-200 transform -translate-y-1/2 bg-transparent rounded-full focus:outline-none focus:shadow-outline top-1/2 hover:bg-gray-300"
             data-tippy-content="Copy to clipboard"
           >
-            <svg
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              class="w-8 h-8"
-            >
+            <svg viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6">
+              <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"></path>
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"
+                d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"
               ></path>
             </svg>
           </button>
         </div>
 
         <div class="flex items-center justify-between my-4">
-          <label for="length" class="text-lg text-gray-700 dark:text-gray-300"
+          <label
+            for="length"
+            class="text-base tracking-wide text-gray-700 dark:text-gray-300"
             >Password length</label
           >
 
-          <div class="flex items-center justify-center w-20">
+          <div class="flex items-center justify-center w-12">
             <input
               id="length"
               type="number"
               min="4"
               max="20"
               value="20"
-              class="block w-16 px-2 py-3 leading-tight text-gray-700 transition-all duration-200 bg-gray-200 border border-transparent rounded appearance-none focus:border-black focus:outline-none focus:bg-white"
+              class="block w-16 p-2 leading-tight text-center text-gray-700 transition-all duration-200 bg-gray-200 border border-transparent rounded appearance-none focus:border-indigo-700 focus:outline-none dark:focus:border-blue-700 focus:bg-white"
               required
             />
           </div>
         </div>
 
         <div class="flex items-center justify-between my-4">
-          <span for="uppercase" class="text-lg text-gray-700 dark:text-gray-300"
-            >Include uppercase letters</span
+          <label
+            for="uppercase"
+            class="text-base tracking-wide text-gray-700 dark:text-gray-300"
+            >Include uppercase letters</label
           >
 
-          <div class="flex items-center justify-center w-20">
+          <div class="flex items-center justify-center w-12">
             <input
               id="uppercase"
               type="checkbox"
-              class="inline-block w-8 h-8 text-indigo-700 align-middle bg-white border rounded outline-none appearance-none select-none focus:shadow-outline"
+              class="inline-block w-5 h-5 text-indigo-700 align-middle bg-white border rounded outline-none appearance-none select-none focus:shadow-outline dark:text-blue-700"
               checked
               required
             />
@@ -103,15 +104,17 @@
         </div>
 
         <div class="flex items-center justify-between my-4">
-          <span for="lowercase" class="text-lg text-gray-700 dark:text-gray-300"
-            >Include lowercase letters</span
+          <label
+            for="lowercase"
+            class="text-base tracking-wide text-gray-700 dark:text-gray-300"
+            >Include lowercase letters</label
           >
 
-          <div class="flex items-center justify-center w-20">
+          <div class="flex items-center justify-center w-12">
             <input
               id="lowercase"
               type="checkbox"
-              class="inline-block w-8 h-8 text-indigo-700 align-middle bg-white border rounded outline-none appearance-none select-none focus:shadow-outline"
+              class="inline-block w-5 h-5 text-indigo-700 align-middle bg-white border rounded outline-none appearance-none select-none focus:shadow-outline dark:text-blue-700"
               checked
               required
             />
@@ -119,15 +122,17 @@
         </div>
 
         <div class="flex items-center justify-between my-4">
-          <span for="numbers" class="text-lg text-gray-700 dark:text-gray-300"
-            >Include numbers</span
+          <label
+            for="numbers"
+            class="text-base tracking-wide text-gray-700 dark:text-gray-300"
+            >Include numbers</label
           >
 
-          <div class="flex items-center justify-center w-20">
+          <div class="flex items-center justify-center w-12">
             <input
               id="numbers"
               type="checkbox"
-              class="inline-block w-8 h-8 text-indigo-700 align-middle bg-white border rounded outline-none appearance-none select-none focus:shadow-outline"
+              class="inline-block w-5 h-5 text-indigo-700 align-middle bg-white border rounded outline-none appearance-none select-none focus:shadow-outline dark:text-blue-700"
               checked
               required
             />
@@ -135,32 +140,36 @@
         </div>
 
         <div class="flex items-center justify-between my-4">
-          <span for="symbols" class="text-lg text-gray-700 dark:text-gray-300"
-            >Include symbols</span
+          <label
+            for="symbols"
+            class="text-base tracking-wide text-gray-700 dark:text-gray-300"
+            >Include symbols</label
           >
 
-          <div class="flex items-center justify-center w-20">
+          <div class="flex items-center justify-center w-12">
             <input
               id="symbols"
               type="checkbox"
-              class="inline-block w-8 h-8 text-indigo-700 align-middle bg-white border rounded outline-none appearance-none select-none focus:shadow-outline"
+              class="inline-block w-5 h-5 text-indigo-700 align-middle bg-white border rounded outline-none appearance-none select-none focus:shadow-outline dark:text-blue-700"
               checked
               required
             />
           </div>
         </div>
 
-        <button
-          id="generate"
-          class="w-full px-6 py-3 mt-4 font-bold text-white transition-all duration-200 bg-indigo-700 rounded hover:bg-indigo-600 dark:text-indigo-700 dark:bg-white dark:hover:bg-gray-300"
-        >
-          Generate password
-        </button>
+        <div class="text-center">
+          <button
+            id="generate"
+            class="px-6 py-3 mt-4 font-bold text-indigo-700 transition-all duration-200 bg-transparent rounded shadow hover:text-white hover:bg-indigo-600 dark:text-white dark:bg-blue-700 dark:hover:bg-blue-600"
+          >
+            Generate password
+          </button>
+        </div>
       </div>
     </div>
 
     <footer
-      class="absolute bottom-0 left-0 w-full py-4 text-right transition-all duration-200 bg-white shadow-lg dark:bg-gray-700 dark:text-white"
+      class="absolute bottom-0 left-0 w-full py-4 text-right transition-all duration-200 bg-white shadow-lg dark:bg-blue-900 dark:text-white"
     >
       <div class="container px-5 mx-auto">
         <p class="font-bold leading-none">
