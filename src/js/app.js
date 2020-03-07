@@ -140,7 +140,7 @@ CLIPBOARD_ELEMENT.addEventListener('click', () => {
   document.execCommand('copy')
   TEXTAREA.remove()
   Toastify({
-    text: 'Password copied to clipboard <span class="mx-2">🚀⌨️</span>',
+    text: 'Password copied to clipboard <span class="mx-2">🚀</span>',
     duration: 5000,
     close: true,
     gravity: 'top',
