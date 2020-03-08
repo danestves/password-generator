@@ -154,61 +154,63 @@ CLIPBOARD_ELEMENT.addEventListener('click', () => {
 /**
  * Dark mode
  */
-const darkMode = (classNameDark, classNameLight, storageKey) => {
-  const BODY = document.getElementsByTagName('html')[0]
-  const DARKMODE_TOGGLE = document.getElementById('darkmode-toggle')
+document.addEventListener('DOMContentLoaded', function() {
+  const darkMode = (classNameDark, classNameLight, storageKey) => {
+    const BODY = document.getElementsByTagName('html')[0]
+    const DARKMODE_TOGGLE = document.getElementById('darkmode-toggle')
 
-  function setClassOnDocumentBody(darkMode) {
-    BODY.classList.add(darkMode ? classNameDark : classNameLight)
-    BODY.classList.remove(darkMode ? classNameLight : classNameDark)
-  }
+    function setClassOnDocumentBody(darkMode) {
+      BODY.classList.add(darkMode ? classNameDark : classNameLight)
+      BODY.classList.remove(darkMode ? classNameLight : classNameDark)
+    }
 
-  const PREFER_DARK_QUERY = '(prefers-color-scheme: dark)'
-  const MQL = window.matchMedia(PREFER_DARK_QUERY)
-  const SUPPORTS_COLOR_SCHEME_QUERY = MQL.media === PREFER_DARK_QUERY
-  let LOCAL_STORAGE_THEME = null
+    const PREFER_DARK_QUERY = '(prefers-color-scheme: dark)'
+    const MQL = window.matchMedia(PREFER_DARK_QUERY)
+    const SUPPORTS_COLOR_SCHEME_QUERY = MQL.media === PREFER_DARK_QUERY
+    let LOCAL_STORAGE_THEME = null
 
-  try {
-    LOCAL_STORAGE_THEME = localStorage.getItem(storageKey)
-  } catch (err) {
-    console.error(err)
-  }
+    try {
+      LOCAL_STORAGE_THEME = localStorage.getItem(storageKey)
+    } catch (err) {
+      console.error(err)
+    }
 
-  const LOCAL_STORAGE_EXISTS = LOCAL_STORAGE_THEME !== null
-  if (LOCAL_STORAGE_EXISTS) {
-    LOCAL_STORAGE_THEME = JSON.parse(LOCAL_STORAGE_THEME)
-  }
+    const LOCAL_STORAGE_EXISTS = LOCAL_STORAGE_THEME !== null
+    if (LOCAL_STORAGE_EXISTS) {
+      LOCAL_STORAGE_THEME = JSON.parse(LOCAL_STORAGE_THEME)
+    }
 
-  // Determine the source of truth
-  if (LOCAL_STORAGE_EXISTS) {
-    // source of truth from localStorage
-    setClassOnDocumentBody(LOCAL_STORAGE_THEME)
-  } else if (SUPPORTS_COLOR_SCHEME_QUERY) {
-    // source of truth from system
-    setClassOnDocumentBody(MQL.matches)
-    localStorage.setItem(storageKey, MQL.matches)
-  } else {
-    // source of truth from document.body
-    const IS_DARK_MODE = BODY.classList.contains(classNameDark)
-
-    localStorage.setItem(storageKey, JSON.stringify(IS_DARK_MODE))
-  }
-
-  DARKMODE_TOGGLE.addEventListener('change', function() {
-    //check if the checkbox is checked or not
-    if (DARKMODE_TOGGLE.checked) {
+    // Determine the source of truth
+    if (LOCAL_STORAGE_EXISTS) {
+      // source of truth from localStorage
+      setClassOnDocumentBody(LOCAL_STORAGE_THEME)
+    } else if (SUPPORTS_COLOR_SCHEME_QUERY) {
+      // source of truth from system
       setClassOnDocumentBody(MQL.matches)
       localStorage.setItem(storageKey, MQL.matches)
     } else {
-      setClassOnDocumentBody(false)
-      localStorage.setItem(storageKey, false)
-    }
-  })
+      // source of truth from document.body
+      const IS_DARK_MODE = BODY.classList.contains(classNameDark)
 
-  if (BODY.classList.contains(classNameDark)) {
-    DARKMODE_TOGGLE.checked = true
-  } else {
-    DARKMODE_TOGGLE.checked = false
+      localStorage.setItem(storageKey, JSON.stringify(IS_DARK_MODE))
+    }
+
+    DARKMODE_TOGGLE.addEventListener('change', function() {
+      //check if the checkbox is checked or not
+      if (DARKMODE_TOGGLE.checked) {
+        setClassOnDocumentBody(MQL.matches)
+        localStorage.setItem(storageKey, MQL.matches)
+      } else {
+        setClassOnDocumentBody(false)
+        localStorage.setItem(storageKey, false)
+      }
+    })
+
+    if (BODY.classList.contains(classNameDark)) {
+      DARKMODE_TOGGLE.checked = true
+    } else {
+      DARKMODE_TOGGLE.checked = false
+    }
   }
-}
-darkMode('dark-mode', 'light-mode', 'darkMode')
+  darkMode('dark-mode', 'light-mode', 'darkMode')
+})
