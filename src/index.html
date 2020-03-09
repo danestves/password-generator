@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Password Generator | Made with TailwindCSS</title>
+    <title id="title"></title>
 
     <!-- Favicons tags -->
     <link
@@ -81,24 +81,15 @@
     <meta name="theme-color" content="#ffffff" />
 
     <!-- Search Engine -->
-    <meta
-      name="description"
-      content="Website made to generate strong password based on user settings, looking to improve the web with better and strong passwords. Made with TailwindCSS and Heroicons."
-    />
+    <meta name="description" />
     <meta
       name="image"
       content="https://via.placeholder.com/1200x628?text=Password%20Generator%20-%20Made%20with%20TailwindCSS"
     />
 
     <!-- Schema.org for Google -->
-    <meta
-      itemprop="name"
-      content="Password Generator | Made with TailwindCSS"
-    />
-    <meta
-      itemprop="description"
-      content="Website made to generate strong password based on user settings, looking to improve the web with better and strong passwords. Made with TailwindCSS and Heroicons."
-    />
+    <meta itemprop="name" />
+    <meta itemprop="description" />
     <meta
       itemprop="image"
       content="https://via.placeholder.com/1200x628?text=Password%20Generator%20-%20Made%20with%20TailwindCSS"
@@ -106,14 +97,8 @@
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta
-      name="twitter:title"
-      content="Password Generator | Made with TailwindCSS"
-    />
-    <meta
-      name="twitter:description"
-      content="Website made to generate strong password based on user settings, looking to improve the web with better and strong passwords. Made with TailwindCSS and Heroicons."
-    />
+    <meta name="twitter:title" />
+    <meta name="twitter:description" />
     <meta name="twitter:site" content="@danestves" />
     <meta name="twitter:creator" content="@danestves" />
     <meta
@@ -122,25 +107,25 @@
     />
 
     <!-- Open Graph general (Facebook, Pinterest & Google+) -->
-    <meta
-      name="og:title"
-      content="Password Generator | Made with TailwindCSS"
-    />
-    <meta
-      name="og:description"
-      content="Website made to generate strong password based on user settings, looking to improve the web with better and strong passwords. Made with TailwindCSS and Heroicons."
-    />
+    <meta name="og:title" />
+    <meta name="og:description" />
     <meta
       name="og:image"
       content="https://via.placeholder.com/1200x628?text=Password%20Generator%20-%20Made%20with%20TailwindCSS"
     />
-    <meta name="og:url" content="https://passwordgenerator-tw.now.sh/" />
+    <meta name="og:url" content="https://passgenerator.dev/" />
     <meta
       name="og:site_name"
       content="Password Generator | Made with TailwindCSS"
     />
     <meta name="og:locale" content="en_US" />
     <meta name="og:type" content="website" />
+
+    <!-- Contry flags -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/css/flag-icon.min.css"
+    />
   </head>
   <body
     class="flex flex-col items-center justify-center pt-20 pb-20 transition-all duration-200 bg-gray-200 sm:pt-0 sm:pb-0 dark:bg-gray-500 sm:h-full"
@@ -151,6 +136,51 @@
       <div
         class="container relative flex flex-wrap items-center justify-end mx-auto"
       >
+        <div
+          @click.away="open = false"
+          class="relative ml-3"
+          x-data="{ open: false }"
+        >
+          <div>
+            <button
+              id="languageSwitcher"
+              @click="open = !open"
+              class="flex items-center max-w-xs px-3 py-2 text-sm text-white text-gray-700 transition-all duration-200 border border-gray-700 rounded focus:outline-none focus:shadow-solid dark:text-white dark:border-white"
+            >
+              <span class="w-8 h-5 flag-icon flag-icon-us"></span>
+              English
+            </button>
+          </div>
+          <div
+            x-show="open"
+            x-transition:enter="transition ease-out duration-100"
+            x-transition:enter-start="transform opacity-0 scale-95"
+            x-transition:enter-end="transform opacity-100 scale-100"
+            x-transition:leave="transition ease-in duration-75"
+            x-transition:leave-start="transform opacity-100 scale-100"
+            x-transition:leave-end="transform opacity-0 scale-95"
+            class="absolute right-0 w-48 mt-2 origin-top-right rounded-md shadow-lg"
+          >
+            <div class="py-1 bg-white rounded-md shadow-xs">
+              <a
+                id="english"
+                href="#"
+                class="flex items-center px-4 py-2 text-sm text-gray-700 transition-all duration-200 hover:bg-gray-300 justify-evenly"
+              >
+                <span class="w-8 h-5 flag-icon flag-icon-us"></span>
+                English
+              </a>
+              <a
+                id="spanish"
+                href="#"
+                class="flex items-center px-4 py-2 text-sm text-gray-700 transition-all duration-200 hover:bg-gray-300 justify-evenly"
+              >
+                <span class="w-8 h-5 flag-icon flag-icon-es"></span>
+                Español
+              </a>
+            </div>
+          </div>
+        </div>
         <div class="flex items-center ml-4 toggleWrapper">
           <input type="checkbox" class="absolute" id="darkmode-toggle" />
           <label for="darkmode-toggle" class="toggle">
@@ -185,9 +215,7 @@
             <span
               id="result"
               class="block w-full py-3 pl-3 pr-12 leading-tight text-gray-500 break-all transition-all duration-200 bg-gray-200 border border-transparent rounded appearance-none focus:border-black focus:outline-none focus:bg-white"
-            >
-              Your password will be here
-            </span>
+            ></span>
 
             <button
               id="clipboard"
@@ -208,10 +236,10 @@
 
           <div class="flex items-center justify-between my-4">
             <label
+              id="lengthLabel"
               for="length"
               class="text-base tracking-wide text-gray-700 dark:text-gray-300"
-              >Password length</label
-            >
+            ></label>
 
             <div class="flex items-center justify-center w-12">
               <input
@@ -228,10 +256,10 @@
 
           <div class="flex items-center justify-between my-4">
             <label
+              id="uppercaseLabel"
               for="uppercase"
               class="text-base tracking-wide text-gray-700 dark:text-gray-300"
-              >Include uppercase letters</label
-            >
+            ></label>
 
             <div class="flex items-center justify-center w-12">
               <input
@@ -246,10 +274,10 @@
 
           <div class="flex items-center justify-between my-4">
             <label
+              id="lowercaseLabel"
               for="lowercase"
               class="text-base tracking-wide text-gray-700 dark:text-gray-300"
-              >Include lowercase letters</label
-            >
+            ></label>
 
             <div class="flex items-center justify-center w-12">
               <input
@@ -264,10 +292,10 @@
 
           <div class="flex items-center justify-between my-4">
             <label
+              id="numbersLabel"
               for="numbers"
               class="text-base tracking-wide text-gray-700 dark:text-gray-300"
-              >Include numbers</label
-            >
+            ></label>
 
             <div class="flex items-center justify-center w-12">
               <input
@@ -282,10 +310,10 @@
 
           <div class="flex items-center justify-between my-4">
             <label
+              id="symbolsLabel"
               for="symbols"
               class="text-base tracking-wide text-gray-700 dark:text-gray-300"
-              >Include symbols</label
-            >
+            ></label>
 
             <div class="flex items-center justify-center w-12">
               <input
@@ -305,10 +333,7 @@
               aria-label="Generate password"
               aria-labelledby="Generate password"
               class="px-6 py-3 mt-4 font-bold text-indigo-700 transition-all duration-200 bg-transparent rounded shadow hover:text-white hover:bg-indigo-600 dark:text-white dark:bg-blue-700 dark:hover:bg-blue-600"
-            >
-              Generate password
-              <span class="sr-only">Generate password</span>
-            </button>
+            ></button>
           </div>
         </div>
       </div>
@@ -318,17 +343,13 @@
       class="fixed bottom-0 left-0 w-full py-4 text-right transition-all duration-200 bg-white shadow-lg dark:bg-blue-900 dark:text-white"
     >
       <div class="container px-5 mx-auto">
-        <p class="font-bold leading-none">
-          Made with <span style="color: #e25555;">&#9829;</span> by
-          <a
-            class="underline"
-            href="https://twitter.com/danestves"
-            target="_blank"
-            rel="noopener noreferrer"
-            >@danestves</a
-          >
-        </p>
+        <p id="copyright" class="font-bold leading-none"></p>
       </div>
     </footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.0.1/dist/alpine.js"
+      defer
+    ></script>
   </body>
 </html>

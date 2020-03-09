@@ -4,6 +4,8 @@ import 'tippy.js/dist/tippy.css'
 import 'tippy.js/animations/scale.css'
 import Toastify from 'toastify-js'
 import 'toastify-js/src/toastify.css'
+import i18next from 'i18next'
+import LanguageDetector from 'i18next-browser-languagedetector'
 
 /**
  * Init tippy
@@ -156,6 +158,10 @@ CLIPBOARD_ELEMENT.addEventListener('click', () => {
  */
 const BODY = document.getElementsByTagName('html')[0]
 const DARKMODE_TOGGLE = document.querySelector('#darkmode-toggle')
+const THEME_COLOR = document.querySelector('meta[name="theme-color"]')
+const THEME_COLOR_MS = document.querySelector(
+  'meta[name="msapplication-TileColor"]'
+)
 
 // Listen when we make a click in the checkbox
 DARKMODE_TOGGLE.addEventListener('click', () => {
@@ -170,16 +176,146 @@ DARKMODE_TOGGLE.addEventListener('click', () => {
 
 // Check if the browser has compatibility with dark mode
 if (window.matchMedia('(prefers-color-scheme: dark)').media !== 'not all') {
-  localStorage.setItem('darkMode', 'true')
-  BODY.classList.add('dark-mode')
-  DARKMODE_TOGGLE.checked = true
+  if (localStorage.getItem('darkMode') !== 'false') {
+    localStorage.setItem('darkMode', 'true')
+    BODY.classList.add('dark-mode')
+    DARKMODE_TOGGLE.checked = true
+  }
 }
 
 // If the item exist in localStorage with true set the class in the HTML
 if (localStorage.getItem('darkMode') === 'true') {
   BODY.classList.add('dark-mode')
+  THEME_COLOR.content = '#2a4365'
+  THEME_COLOR_MS.content = '#2a4365'
   DARKMODE_TOGGLE.checked = true
 } else {
   BODY.classList.remove('dark-mode')
+  THEME_COLOR.content = '#ffffff'
+  THEME_COLOR_MS.content = '#ffffff'
   DARKMODE_TOGGLE.checked = false
+}
+
+/**
+ * Language switcher
+ */
+i18next.use(LanguageDetector).init(
+  {
+    fallbackLng: 'en',
+    debug: true,
+    resources: {
+      en: {
+        translation: {
+          title: 'Password Generator | Made with TailwindCSS',
+          description:
+            'Website made to generate strong password based on user settings, looking to improve the web with better and strong passwords. Made with TailwindCSS and Heroicons.',
+          language: 'en_US',
+          placeholder: 'Your password will be here',
+          length: 'Password length',
+          uppercase: 'Include uppercase letters',
+          lowercase: 'Include lowercase letters',
+          numbers: 'Include numbers',
+          symbols: 'Include symbols',
+          button: 'Generate password',
+          copyright: `Made with <span style="color: #e25555;">&#9829;</span> by
+          <a
+            class="underline"
+            href="https://twitter.com/danestves"
+            target="_blank"
+            rel="noopener noreferrer"
+            >@danestves</a
+          >`
+        }
+      },
+      es: {
+        translation: {
+          title: 'Password Generator | Hecho con TailwindCSS',
+          description:
+            'Sitio web creado para generar contraseñas seguras basadas en la configuración del usuario, buscando mejorar la web con contraseñas mejores y más seguras. Hecho con TailwindCSS y Heroicons.',
+          language: 'es_ES',
+          placeholder: 'Tu contraseña irá aquí',
+          length: 'Longitud de la contraseña',
+          uppercase: 'Incluir mayúsculas',
+          lowercase: 'Incluir minúsculas',
+          numbers: 'Incluir números',
+          symbols: 'Incluir símbolos',
+          button: 'Generar contraseña',
+          copyright: `Hecho con <span style="color: #e25555;">&#9829;</span> por
+          <a
+            class="underline"
+            href="https://twitter.com/danestves"
+            target="_blank"
+            rel="noopener noreferrer"
+            >@danestves</a
+          >`
+        }
+      }
+    }
+  },
+  function(err, t) {
+    // Head elements
+    document.querySelector('title').innerHTML = i18next.t('title')
+    document.querySelector('meta[name="description"]').content = i18next.t(
+      'description'
+    )
+    document.querySelector('meta[itemprop="name"]').content = i18next.t('title')
+    document.querySelector('meta[itemprop="description"]').content = i18next.t(
+      'description'
+    )
+    document.querySelector('meta[name="twitter:title"]').content = i18next.t(
+      'title'
+    )
+    document.querySelector(
+      'meta[name="twitter:description"]'
+    ).content = i18next.t('description')
+    document.querySelector('meta[name="og:title"]').content = i18next.t('title')
+    document.querySelector('meta[name="og:description"]').content = i18next.t(
+      'description'
+    )
+    document.querySelector('meta[name="og:site_name"]').content = i18next.t(
+      'title'
+    )
+    document.querySelector('meta[name="og:locale"]').content = i18next.t(
+      'language'
+    )
+
+    // HTML elements
+    document.getElementById('result').innerHTML = i18next.t('placeholder')
+    document.getElementById('lengthLabel').innerHTML = i18next.t('length')
+    document.getElementById('uppercaseLabel').innerHTML = i18next.t('uppercase')
+    document.getElementById('lowercaseLabel').innerHTML = i18next.t('lowercase')
+    document.getElementById('numbersLabel').innerHTML = i18next.t('numbers')
+    document.getElementById('symbolsLabel').innerHTML = i18next.t('symbols')
+    document.getElementById('generate').innerHTML = `${i18next.t(
+      'button'
+    )}<span class="sr-only">${i18next.t('button')}</span>`
+    document.getElementById('copyright').innerHTML = i18next.t('copyright')
+  }
+)
+
+const LANGUAGE_SWITCHER = document.querySelector('#languageSwitcher')
+const ENGLISH_BUTTON = document.querySelector('#english')
+const SPANISH_BUTTON = document.querySelector('#spanish')
+
+ENGLISH_BUTTON.addEventListener('click', e => {
+  e.preventDefault()
+
+  localStorage.setItem('i18nextLng', 'en')
+  window.location.reload()
+})
+
+SPANISH_BUTTON.addEventListener('click', e => {
+  e.preventDefault()
+
+  localStorage.setItem('i18nextLng', 'es')
+  window.location.reload()
+})
+
+if (localStorage.getItem('i18nextLng') === 'en') {
+  LANGUAGE_SWITCHER.innerHTML = `<span class="w-8 h-5 mr-2 flag-icon flag-icon-us"></span> English`
+} else if (
+  localStorage.getItem('i18nextLng') === 'es' ||
+  localStorage.getItem('i18nextLng') === 'es-ES'
+) {
+  LANGUAGE_SWITCHER.innerHTML = `<span class="w-8 h-5 mr-2 flag-icon flag-icon-es"></span> Español`
 }

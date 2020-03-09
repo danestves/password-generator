@@ -623,7 +623,7 @@ module.exports = {
     backgroundRepeat: ['responsive'],
     backgroundSize: ['responsive'],
     borderCollapse: ['responsive'],
-    borderColor: ['responsive', 'hover', 'focus', 'dark:focus'],
+    borderColor: ['responsive', 'hover', 'focus', 'dark', 'dark:focus'],
     borderRadius: ['responsive'],
     borderStyle: ['responsive'],
     borderWidth: ['responsive'],
