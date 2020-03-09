@@ -10,10 +10,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 
 - Validation if at least one checkbox is cheked
+- Allow only numbers on input without decimals
 
 ### Fixed
 
 - Minimun and maximun value of input length
+- Translations for toastify
 
 ## [1.0.1] - 2020-03-09
 

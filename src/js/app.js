@@ -67,12 +67,23 @@ const CLIPBOARD_ELEMENT = document.getElementById('clipboard')
 /**
  * Limit numbers to max 300 in length
  */
-function handleChangeLength() {
-  const value = parseInt(this.value)
+function handleChangeLength(e) {
+  let value = parseInt(this.value)
+
   if (value < 8) this.value = 8
   if (value > 300) this.value = 300
 }
 LENGTH_ELEMENT.addEventListener('change', handleChangeLength, false)
+
+/**
+ * Deleting commas and dots from input length
+ */
+function handleDeleteSpecialCharacters(e) {
+  if (e.keyCode === 190 || e.keyCode === 110) {
+    e.preventDefault()
+  }
+}
+LENGTH_ELEMENT.addEventListener('keydown', handleDeleteSpecialCharacters, false)
 
 /**
  * Generate password
@@ -160,9 +171,22 @@ GENERATE_ELEMENT.addEventListener('click', () => {
 CLIPBOARD_ELEMENT.addEventListener('click', () => {
   const TEXTAREA = document.createElement('textarea')
   const PASSWORD = RESULT_ELEMENT.innerText
+  let text
 
-  if (PASSWORD === 'Your password will be here') {
+  if (
+    PASSWORD === 'Your password will be here' ||
+    PASSWORD === 'Tu contraseña irá aquí'
+  ) {
     return
+  }
+
+  if (localStorage.getItem('i18nextLng') === 'en') {
+    text = 'Password copied to clipboard <span class="mx-2">🚀</span>'
+  } else if (
+    localStorage.getItem('i18nextLng') === 'es' ||
+    localStorage.getItem('i18nextLng') === 'es-ES'
+  ) {
+    text = 'Contraseña copiada al portapapeles <span class="mx-2">🚀</span>'
   }
 
   TEXTAREA.value = PASSWORD
@@ -171,7 +195,7 @@ CLIPBOARD_ELEMENT.addEventListener('click', () => {
   document.execCommand('copy')
   TEXTAREA.remove()
   Toastify({
-    text: 'Password copied to clipboard <span class="mx-2">🚀</span>',
+    text,
     duration: 5000,
     close: true,
     gravity: 'top',
