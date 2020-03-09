@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
-- Validation if at least on checkbox is cheked
+- Validation if at least one checkbox is cheked
 
 ### Fixed
 
