@@ -1,4 +1,7 @@
 # <center>Password Generator ✨</center>
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![Build Status](https://travis-ci.org/danestves/password-generator.png?branch=master)](https://travis-ci.org/danestves/password-generator) [![GitHub issues](https://img.shields.io/github/issues/danestves/password-generator)](https://github.com/danestves/password-generator/issues) [![GitHub forks](https://img.shields.io/github/forks/danestves/password-generator)](https://github.com/danestves/password-generator/network) [![GitHub stars](https://img.shields.io/github/stars/danestves/password-generator)](https://github.com/danestves/password-generator/stargazers) [![GitHub license](https://img.shields.io/github/license/danestves/password-generator)](https://github.com/danestves/password-generator/blob/master/LICENSE)
 
@@ -132,3 +135,22 @@ if (localStorage.getItem('darkMode') === 'true') {
 And that's all! 😱 Also if you want to know how we create the functionality to generate the password, you can check in `app.js`. All the file is documented and ready to make changes if you want to improve the functionality 💪
 
 **Let's go and help open source projects** 😎
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://danestves.com/"><img src="https://avatars0.githubusercontent.com/u/31737273?v=4" width="100px;" alt=""/><br /><sub><b>Daniel Esteves</b></sub></a><br /><a href="https://github.com/danestves/password-generator/commits?author=danestves" title="Code">💻</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
