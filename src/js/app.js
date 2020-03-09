@@ -161,13 +161,13 @@ DARKMODE_TOGGLE.addEventListener('click', () => {
   BODY.classList.toggle('dark-mode')
 
   if (BODY.classList.contains('dark-mode')) {
-    localStorage.setItem('darkMode', true)
+    localStorage.setItem('darkMode', 'true')
   } else {
-    localStorage.setItem('darkMode', false)
+    localStorage.setItem('darkMode', 'false')
   }
 })
 
-if (localStorage.getItem('darkMode') === true) {
+if (localStorage.getItem('darkMode') === 'true') {
   BODY.classList.add('dark-mode')
   DARKMODE_TOGGLE.checked = true
 } else {
