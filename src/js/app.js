@@ -126,6 +126,25 @@ GENERATE_ELEMENT.addEventListener('click', () => {
   const HAS_NUMBER = NUMBERS_ELEMENT.checked
   const HAS_SYMBOL = SYMBOLS_ELEMENT.checked
 
+  if (!HAS_UPPER && !HAS_LOWER && !HAS_NUMBER && !HAS_SYMBOL) {
+    let text
+
+    if (localStorage.getItem('i18nextLng') === 'en') {
+      text = '🚨 You must check at lest one option'
+    } else if (
+      localStorage.getItem('i18nextLng') === 'es' ||
+      localStorage.getItem('i18nextLng') === 'es-ES'
+    ) {
+      text = '🚨 Debes marcar al menos una opción'
+    }
+
+    return Toastify({
+      text,
+      backgroundColor: '#ED8936',
+      className: 'info'
+    }).showToast()
+  }
+
   RESULT_ELEMENT.innerText = generatePassword(
     LENGTH,
     HAS_UPPER,
