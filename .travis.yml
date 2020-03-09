@@ -11,3 +11,8 @@ script:
   - npm run lint:js
   - npm run lint:html
   - npm run build
+after_script:
+  - NOW_ALIAS=passgenerator.dev node_modules/.bin/now-travis
+branches:
+  only:
+    - master
