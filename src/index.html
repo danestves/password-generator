@@ -247,22 +247,26 @@
           </div>
 
           <div class="flex items-center justify-between my-4">
-            <div class="flex flex-col w-full text-gray-700 dark:text-gray-300">
+            <div class="flex flex-col w-full">
               <label
                 id="lengthLabel"
                 for="length"
-                class="text-lg tracking-wide"
+                class="text-lg tracking-wide text-gray-700 dark:text-gray-300"
               ></label>
-              <small>Maximum length: 300</small>
+              <small class="text-gray-500">
+                Minimum length: <span class="font-semibold">8</span> | Maximum
+                length: <span class="font-semibold">300</span>
+              </small>
             </div>
 
             <div class="flex items-center justify-center w-12">
               <input
                 id="length"
                 type="number"
-                min="4"
-                max="20"
-                value="20"
+                min="8"
+                max="300"
+                value="8"
+                step="1"
                 class="block w-16 p-2 leading-tight text-center text-gray-700 transition-all duration-200 bg-gray-200 border border-transparent rounded appearance-none focus:border-indigo-700 focus:outline-none dark:focus:border-blue-700 focus:bg-white"
                 required
               />
