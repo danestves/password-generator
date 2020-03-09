@@ -1,6 +1,6 @@
 {
   "name": "password-generator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Password generator made by @danestves with TailwindCSS and plain JavaScript",
   "main": "index.js",
   "scripts": {
