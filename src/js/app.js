@@ -157,6 +157,7 @@ CLIPBOARD_ELEMENT.addEventListener('click', () => {
 const BODY = document.getElementsByTagName('html')[0]
 const DARKMODE_TOGGLE = document.querySelector('#darkmode-toggle')
 
+// Listen when we make a click in the checkbox
 DARKMODE_TOGGLE.addEventListener('click', () => {
   BODY.classList.toggle('dark-mode')
 
@@ -167,6 +168,14 @@ DARKMODE_TOGGLE.addEventListener('click', () => {
   }
 })
 
+// Check if the browser has compatibility with dark mode
+if (window.matchMedia('(prefers-color-scheme: dark)').media !== 'not all') {
+  localStorage.setItem('darkMode', 'true')
+  BODY.classList.add('dark-mode')
+  DARKMODE_TOGGLE.checked = true
+}
+
+// If the item exist in localStorage with true set the class in the HTML
 if (localStorage.getItem('darkMode') === 'true') {
   BODY.classList.add('dark-mode')
   DARKMODE_TOGGLE.checked = true
