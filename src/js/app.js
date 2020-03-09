@@ -265,6 +265,7 @@ i18next.use(LanguageDetector).init(
           language: 'en_US',
           placeholder: 'Your password will be here',
           length: 'Password length',
+          infoLength: `Minimum length: <span class="font-semibold">8</span> | Maximum length: <span class="font-semibold">300</span>`,
           uppercase: 'Include uppercase letters',
           lowercase: 'Include lowercase letters',
           numbers: 'Include numbers',
@@ -288,6 +289,7 @@ i18next.use(LanguageDetector).init(
           language: 'es_ES',
           placeholder: 'Tu contraseña irá aquí',
           length: 'Longitud de la contraseña',
+          infoLength: `Mínimo: <span class="font-semibold">8</span> | Máximo: <span class="font-semibold">300</span>`,
           uppercase: 'Incluir mayúsculas',
           lowercase: 'Incluir minúsculas',
           numbers: 'Incluir números',
@@ -335,6 +337,7 @@ i18next.use(LanguageDetector).init(
     // HTML elements
     document.getElementById('result').innerHTML = i18next.t('placeholder')
     document.getElementById('lengthLabel').innerHTML = i18next.t('length')
+    document.getElementById('infoLength').innerHTML = i18next.t('infoLength')
     document.getElementById('uppercaseLabel').innerHTML = i18next.t('uppercase')
     document.getElementById('lowercaseLabel').innerHTML = i18next.t('lowercase')
     document.getElementById('numbersLabel').innerHTML = i18next.t('numbers')
