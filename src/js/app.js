@@ -65,6 +65,38 @@ const GENERATE_ELEMENT = document.getElementById('generate')
 const CLIPBOARD_ELEMENT = document.getElementById('clipboard')
 
 /**
+ * Limit numbers to max 300 in length
+ */
+function handleChangeLength(e) {
+  let charCode = e.which ? e.which : e.keyCode
+
+  if (
+    //0~9
+    (charCode >= 48 && charCode <= 57) ||
+    //number pad 0~9
+    (charCode >= 96 && charCode <= 105) ||
+    //backspace
+    charCode == 8 ||
+    //tab
+    charCode == 9 ||
+    //enter
+    charCode == 13 ||
+    //left, right, delete..
+    (charCode >= 35 && charCode <= 46)
+  ) {
+    //make sure the new value below 20
+    if (parseInt(this.value + String.fromCharCode(charCode), 10) <= 300)
+      return true
+  }
+
+  e.preventDefault()
+  e.stopPropagation()
+
+  return false
+}
+LENGTH_ELEMENT.addEventListener('keypress', handleChangeLength, false)
+
+/**
  * Generate password
  *
  * @param {Number} length
