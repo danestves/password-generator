@@ -11,9 +11,3 @@ script:
   - npm run lint:js
   - npm run lint:html
   - npm run build
-deploy:
-  provider: script
-  script: npm run deploy
-  skip_cleanup: true
-  on:
-    branch: master
