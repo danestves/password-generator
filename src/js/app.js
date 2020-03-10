@@ -255,7 +255,6 @@ if (localStorage.getItem('darkMode') === 'true') {
 i18next.use(LanguageDetector).init(
   {
     fallbackLng: 'en',
-    debug: true,
     resources: {
       en: {
         translation: {
