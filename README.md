@@ -1,6 +1,9 @@
 # <center>Password Generator ✨</center>
+
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![Build Status](https://travis-ci.org/danestves/password-generator.png?branch=master)](https://travis-ci.org/danestves/password-generator) [![GitHub issues](https://img.shields.io/github/issues/danestves/password-generator)](https://github.com/danestves/password-generator/issues) [![GitHub forks](https://img.shields.io/github/forks/danestves/password-generator)](https://github.com/danestves/password-generator/network) [![GitHub stars](https://img.shields.io/github/stars/danestves/password-generator)](https://github.com/danestves/password-generator/stargazers) [![GitHub license](https://img.shields.io/github/license/danestves/password-generator)](https://github.com/danestves/password-generator/blob/master/LICENSE)
@@ -151,6 +154,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+
+Please note that this project is released with a [Contributor Code of Conduct](CODE-OF-CONDUCT.md). By participating in this project you agree to abide by its terms.
