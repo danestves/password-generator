@@ -1,5 +1,4 @@
-const cssnano = require('cssnano')
-const merge = require('webpack-merge')
+const { merge } = require('webpack-merge')
 
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
@@ -39,7 +38,6 @@ module.exports = merge(common, {
     }),
     new OptimizeCssAssetsPlugin({
       assetNameRegExp: /\.css$/g,
-      cssProcessor: cssnano,
       cssProcessorOptions: { discardComments: { removeAll: true } },
       canPrint: true
     })

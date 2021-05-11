@@ -218,9 +218,9 @@ const THEME_COLOR_MS = document.querySelector(
 
 // Listen when we make a click in the checkbox
 DARKMODE_TOGGLE.addEventListener('click', () => {
-  BODY.classList.toggle('dark-mode')
+  BODY.classList.toggle('dark')
 
-  if (BODY.classList.contains('dark-mode')) {
+  if (BODY.classList.contains('dark')) {
     localStorage.setItem('darkMode', 'true')
   } else {
     localStorage.setItem('darkMode', 'false')
@@ -231,19 +231,19 @@ DARKMODE_TOGGLE.addEventListener('click', () => {
 if (window.matchMedia('(prefers-color-scheme: dark)').media !== 'not all') {
   if (localStorage.getItem('darkMode') !== 'false') {
     localStorage.setItem('darkMode', 'true')
-    BODY.classList.add('dark-mode')
+    BODY.classList.add('dark')
     DARKMODE_TOGGLE.checked = true
   }
 }
 
 // If the item exist in localStorage with true set the class in the HTML
 if (localStorage.getItem('darkMode') === 'true') {
-  BODY.classList.add('dark-mode')
+  BODY.classList.add('dark')
   THEME_COLOR.content = '#2a4365'
   THEME_COLOR_MS.content = '#2a4365'
   DARKMODE_TOGGLE.checked = true
 } else {
-  BODY.classList.remove('dark-mode')
+  BODY.classList.remove('dark')
   THEME_COLOR.content = '#ffffff'
   THEME_COLOR_MS.content = '#ffffff'
   DARKMODE_TOGGLE.checked = false

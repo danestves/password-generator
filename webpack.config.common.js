@@ -14,8 +14,10 @@ const generateHTMLPlugins = () =>
   )
 
 module.exports = {
-  node: {
-    fs: 'empty'
+  resolve: {
+    fallback: {
+      fs: false
+    }
   },
   entry: ['./src/js/app.js', './src/style/main.scss'],
   output: {
@@ -65,12 +67,14 @@ module.exports = {
     ]
   },
   plugins: [
-    new CopyWebpackPlugin([
-      {
-        from: './src/static/',
-        to: './static/'
-      }
-    ]),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: './src/static/',
+          to: './static/'
+        }
+      ]
+    }),
     ...generateHTMLPlugins()
   ],
   stats: {
