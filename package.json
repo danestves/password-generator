@@ -42,7 +42,7 @@
     "now-travis": "^1.2.0",
     "optimize-css-assets-webpack-plugin": "^5.0.4",
     "pa11y-ci": "^2.4.1",
-    "postcss": "^7",
+    "postcss": "^8",
     "postcss-loader": "^5.2.0",
     "raw-loader": "^4.0.2",
     "sass-loader": "^11.1.0",
