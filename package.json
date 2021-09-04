@@ -41,7 +41,7 @@
     "node-sass": "^6.0.0",
     "now-travis": "^1.2.0",
     "optimize-css-assets-webpack-plugin": "^5.0.4",
-    "pa11y-ci": "^2.4.1",
+    "pa11y-ci": "2.4.2",
     "postcss": "^8",
     "postcss-loader": "^5.2.0",
     "raw-loader": "^4.0.2",
