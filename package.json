@@ -38,7 +38,7 @@
     "html-webpack-plugin": "^5.3.1",
     "http-server": "^0.12.3",
     "mini-css-extract-plugin": "^1.6.0",
-    "node-sass": "^6.0.0",
+    "node-sass": "6.0.1",
     "now-travis": "^1.2.0",
     "optimize-css-assets-webpack-plugin": "^5.0.4",
     "pa11y-ci": "^2.4.1",
