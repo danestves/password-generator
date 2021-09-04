@@ -40,7 +40,7 @@
     "mini-css-extract-plugin": "^1.6.0",
     "node-sass": "^6.0.0",
     "now-travis": "^1.2.0",
-    "optimize-css-assets-webpack-plugin": "^5.0.4",
+    "optimize-css-assets-webpack-plugin": "5.0.8",
     "pa11y-ci": "^2.4.1",
     "postcss": "^8",
     "postcss-loader": "^5.2.0",
