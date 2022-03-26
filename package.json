@@ -23,7 +23,7 @@
     "@babel/preset-env": "^7.14.1",
     "@danestves/tailwindcss-darkmode": "^2.0.1",
     "@fullhuman/postcss-purgecss": "^4.0.3",
-    "autoprefixer": "^9",
+    "autoprefixer": "10.4.4",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
     "clean-webpack-plugin": "^3.0.0",
